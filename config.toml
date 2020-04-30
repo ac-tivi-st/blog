@@ -58,15 +58,19 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
   # Check https://github.com/Track3/hermit#social-icons for more info.
   [[params.social]]
     name = "twitter"
-    url = "https://twitter.com/ac_tivi_st"
+    url = "https://twitter.com/hack_tivi_st"
 
   [[params.social]]
     name = "email"
-    url = "mailto:team@ac.tivi.st"
+    url = "mailto:hacktivist.blog@gmail.com"
 
   [[params.social]]
     name = "github"
     url = "https://github.com/ac-tivi-st"
+
+  [[params.social]]
+    name = "youtube"
+    url = "https://www.youtube.com/channel/UC1bpdfGmGeT14wv_TaaLcvA"
 
 [menu]
 
