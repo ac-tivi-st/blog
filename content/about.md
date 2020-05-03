@@ -3,7 +3,7 @@ title = "About this blog"
 date = "2020-04-25"
 +++
 
-The `ac.tivi.st` is a calendar web application project. This project is started as a side/pet project. The goal apply modern technologies on that project.
+The `ac.tivi.st` is a calendar web application project. This project is started as a side/pet project. The goal apply modern technologies on that project. And I want to share my experience from here.
 
 The main technologies in that project;
 - Golang (mainly), Rust (maybe), Kotlin (maybe) (for micro-services)
