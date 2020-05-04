@@ -1,1 +1,43 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on hack.tivi.st</title><link>https://hack.tivi.st/posts/</link><description>Recent content in Posts on hack.tivi.st</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 25 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hack.tivi.st/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Let's start the project</title><link>https://hack.tivi.st/posts/lets-start-the-project/</link><pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate><guid>https://hack.tivi.st/posts/lets-start-the-project/</guid><description>Introduction</description><content type="html">&lt;h2 id="introduction">Introduction&lt;/h2></content></item></channel></rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on hack.tivi.st</title><link>https://hack.tivi.st/posts/</link><description>Recent content in Posts on hack.tivi.st</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 25 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hack.tivi.st/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Let's start the project</title><link>https://hack.tivi.st/posts/lets-start-the-project/</link><pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate><guid>https://hack.tivi.st/posts/lets-start-the-project/</guid><description>Introduction I&amp;rsquo;ve got a domain for that project. Domain is ac.tivi.st. I think so good that is good name for a calendar/event application project. I&amp;rsquo;ll use AWS platform for cloud requirement. Besides, each service&amp;rsquo;s project structure will be clean architecture style.
+As the first step, I want to create a simple working version.
+I&amp;rsquo;ve bought domain (tivi.st) I&amp;rsquo;ve created an AWS account. I&amp;rsquo;ve created a terraform.io account for terraform state.</description><content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
+<p>I&rsquo;ve got a domain for that project. Domain is <code>ac.tivi.st</code>. I think so good that is good name for a calendar/event application project.
+I&rsquo;ll use AWS platform for cloud requirement. Besides, each service&rsquo;s project structure will be clean architecture style.</p>
+<p>As the first step, I want to create a simple working version.</p>
+<ul>
+<li>I&rsquo;ve bought domain (tivi.st)</li>
+<li>I&rsquo;ve created an AWS account.</li>
+<li>I&rsquo;ve created a terraform.io account for terraform state. (terraform is a provision and management tool for cloud)</li>
+<li>I&rsquo;ve installed terraform, aws-cli tools.</li>
+</ul>
+<h3 id="domain-setup">Domain Setup</h3>
+<p>Firstly, I created new repo for infrastructure. After I applied, terraform project layout like below;</p>
+<pre><code>.
+└── aws
+    ├── modules
+    │   ├── cognito-userpool
+    │   ├── eks-cluster
+    │   └── vpc
+    └── providers
+        ├── 010-route53
+        ├── 020-vpc
+        ├── 030-eks
+        └── 040-cognito-userpool
+</code></pre><p>First I&rsquo;ve created DNS setup for <code>tivi.st</code> domain.</p>
+<div class="highlight"><pre class="chroma"><code class="language-terraform" data-lang="terraform"><span class="kr">resource</span> <span class="s2">&#34;aws_route53_zone&#34;</span> <span class="s2">&#34;main&#34;</span> <span class="p">{</span>
+  <span class="na">name</span> = <span class="s2">&#34;tivi.st&#34;</span>
+<span class="p">}</span>
+<span class="kr">
+</span><span class="kr">resource</span> <span class="s2">&#34;aws_route53_record&#34;</span> <span class="s2">&#34;blog&#34;</span> <span class="p">{</span>
+  <span class="na">zone_id</span> = <span class="nx">aws_route53_zone</span><span class="p">.</span><span class="nx">main</span><span class="p">.</span><span class="nx">zone_id</span>
+  <span class="na">name</span>    = <span class="s2">&#34;hack&#34;</span>
+  <span class="na">type</span>    = <span class="s2">&#34;CNAME&#34;</span>
+  <span class="na">ttl</span>     = <span class="s2">&#34;1800&#34;</span>
+  <span class="na">records</span> = <span class="p">[</span><span class="s2">&#34;ac-tivi-st.github.io.&#34;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="kr">
+</span><span class="kr">output</span> <span class="s2">&#34;namespaces&#34;</span> <span class="p">{</span>
+  <span class="na">description</span> = <span class="s2">&#34;domain ns&#34;</span>
+  <span class="na">value</span>       = <span class="nb">join</span><span class="p">(</span><span class="s2">&#34;,&#34;</span><span class="p">,</span> <span class="nx">aws_route53_zone</span><span class="p">.</span><span class="nx">main</span><span class="p">.</span><span class="nx">name_servers</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>]]></content></item></channel></rss>
