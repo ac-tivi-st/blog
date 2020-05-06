@@ -64,9 +64,9 @@ Firstly, you need login to terraform.io. After for remote state management you n
 ```terraform
 terraform {
     backend "remote" {
-        organization = "activist"
+        organization = "{your-organization}"
         workspaces {
-            prefix = "route53-"
+            prefix = "{your-prefix}-"
         }
     }
 }
@@ -81,6 +81,9 @@ $ terraform init
 $ terraform plan
 $ terraform apply
 ```
+
+*Tip:* If you want to keep terraform state only, you should change `Execution Mode` as `local` at https://app.terraform.io/app/{your-organization}/workspaces/{your-prefix}-dev/settings/general address.
+
 
 ## Github Pages
 
