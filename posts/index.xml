@@ -44,9 +44,9 @@ I&rsquo;ll use AWS platform for cloud requirement. Besides, each service&rsquo;s
 <p>Firstly, you need login to terraform.io. After for remote state management you need below lines.</p>
 <div class="highlight"><pre class="chroma"><code class="language-terraform" data-lang="terraform"><span class="nx">terraform</span> <span class="p">{</span>
     <span class="nx">backend</span> <span class="s2">&#34;remote&#34;</span> <span class="p">{</span>
-        <span class="na">organization</span> = <span class="s2">&#34;activist&#34;</span>
+        <span class="na">organization</span> = <span class="s2">&#34;{your-organization}&#34;</span>
         <span class="nx">workspaces</span> <span class="p">{</span>
-            <span class="na">prefix</span> = <span class="s2">&#34;route53-&#34;</span>
+            <span class="na">prefix</span> = <span class="s2">&#34;{your-prefix}-&#34;</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -56,7 +56,8 @@ $ terraform workspace new &lt;ENV&gt;
 $ terraform init
 $ terraform plan
 $ terraform apply
-</code></pre></div><h2 id="github-pages">Github Pages</h2>
+</code></pre></div><p><em>Tip:</em> If you want to keep terraform state only, you should change <code>Execution Mode</code> as <code>local</code> at <a href="https://app.terraform.io/app/%7Byour-organization%7D/workspaces/%7Byour-prefix%7D-dev/settings/general">https://app.terraform.io/app/{your-organization}/workspaces/{your-prefix}-dev/settings/general</a> address.</p>
+<h2 id="github-pages">Github Pages</h2>
 <p>I&rsquo;ve created new repo in my github account (<a href="https://github.com/ac-tivi-st/blog">https://github.com/ac-tivi-st/blog</a>)</p>
 <h2 id="next-steps">Next Steps</h2>
 <p>I&rsquo;ll continue with kubernetes setup for simple project.</p>
