@@ -91,4 +91,4 @@ I've created new repo in my github account (https://github.com/ac-tivi-st/blog)
 
 ## Next Steps
 
-I'll continue with kubernetes setup for simple project.
+We will continue with development the project.
